@@ -1,5 +1,6 @@
 package org.example.pageObjects;
 
+import org.example.helper.Helper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,12 +14,14 @@ import java.time.Duration;
 public class LoginPage {
     protected WebDriver driver;
 
+    Helper helper;
     public LoginPage (WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        helper = new Helper(this.driver);
     }
 
-    private String username = "jovanasalon@test.qa";
+    private String username = "jovanabiznis@test.qa";
     private String password = "test1234";
 
     @FindBy(xpath =  "//input[contains(@placeholder,'Unesi e-mail adresu')]")
@@ -31,8 +34,9 @@ public class LoginPage {
     WebElement submitBtn;
 
     public void login() {
-        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-        wait.until(ExpectedConditions.visibilityOf(emailFld));
+
+        //how to access Helper class ?
+        helper.waitingForElement(emailFld);
         emailFld.click();
         emailFld.sendKeys(username);
         passwordFld.sendKeys(password);

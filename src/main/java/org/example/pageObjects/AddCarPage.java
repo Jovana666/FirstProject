@@ -1,90 +1,213 @@
 package org.example.pageObjects;
 
 
+import org.example.helper.Helper;
+import org.junit.Assert;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class AddCarPage {
+import java.security.Key;
+
+public class AddCarPage{
+
+    protected WebDriver driver;
+
+    public AddCarPage(WebDriver driver) {
+        this.driver = driver;
+        //to initialize web elements
+        PageFactory.initElements(driver, this);
+    }
+
+    private String filePath = "C:\\Users\\inspira\\IdeaProjects\\FirstProject\\imageCar.jpg";
     @FindBy(id = "agencyInternalId")
     WebElement internalNumber;
 
     @FindBy (id = "reserved")
     WebElement reservedCheckbox;
 
-    @FindBy (id = ".ant-upload-drag-container")
+    @FindBy (id = "imageUpload")
     WebElement uploadPhoto;
-
-    @FindBy (xpath = "//div[@class=' css-1xyxx1l-control']/div[@class=' css-133ebha']")
+    @FindBy (id = "react-select-brand-instance-placeholder")
     WebElement chooseCarBrand;
 
-    @FindBy (xpath = "//div[@id='modelCol']//div[@class='sc-khsqcC fNoDuJ select-field']")
+    @FindBy (id = "brand-input")
+    WebElement carBrandList;
+
+    @FindBy (xpath = "//div[@id='model']//div[@class=' css-b44d4p']")
     WebElement chooseCarModel;
 
-    @FindBy (id = "year")
+    @FindBy (id = "model-input")
+    WebElement modelList;
+
+        @FindBy (id = "year")
     WebElement carYear;
 
-    @FindBy (xpath = "//div[@id='fuelType']//div[@class=' css-1xc3v61-indicatorContainer']")
+    @FindBy (id = "react-select-fuelType-instance-placeholder")
     WebElement fuel;
+
+    @FindBy (id = "fuelType-input")
+    WebElement fuelList;
 
     @FindBy (id = "cubic")
     WebElement cubicCapacity;
 
-    @FindBy (id = "powerkW")
+    @FindBy (id = "powerKw")
     WebElement powerKw;
-
-    @FindBy (id = "powerks")
-    WebElement powerKs;
 
     @FindBy (id = "mileage")
     WebElement mileage;
 
-    @FindBy (xpath = "//div[@id='engineEmissionClass']//div[@class=' css-1xc3v61-indicatorContainer']")
+    @FindBy (id = "react-select-engineEmissionClass-instance-placeholder")
     WebElement engineEmissionClass;
 
-    @FindBy (xpath = "//div[@id='drive']//div[@class=' css-g1hey4']")
+    @FindBy (id = "engineEmissionClass-input")
+    WebElement getEngineEmissionList;
+
+    @FindBy (xpath = "//div[@id='drive']//div[@class=' css-b44d4p']")
     WebElement drive;
 
-    @FindBy (xpath = "//div[@id='transmission']//div[@class=' css-1xc3v61-indicatorContainer']")
-    WebElement gearBox;
+    @FindBy (id = "drive-input")
+    WebElement driveList;
 
-    @FindBy (xpath = "//div[@id='numberOfDoors']//div[@class=' css-1xc3v61-indicatorContainer']")
-    WebElement doorNumber;
+    @FindBy (xpath = "//div[@id='transmission']//div[@class=' css-g1hey4']")
+    WebElement transmission;
 
-    @FindBy (xpath = "//div[@id='numberOfSeats']//div[@class=' css-1xc3v61-indicatorContainer']")
+    @FindBy (id = "transmission-input")
+    WebElement transmissionList;
+
+    @FindBy (xpath = "//div[@id='numberOfDoors']//div[@class=' css-g1hey4']")
+    WebElement numberOfDoors;
+
+    @FindBy (id = "numberOfDoors-input")
+    WebElement numberOfDoorsList;
+
+    @FindBy (id = "react-select-numberOfSeats-instance-placeholder")
     WebElement numberOfSeats;
 
-    @FindBy (xpath = "//div[@id='sideOfSteeringWheel']//div[@class=' css-1xc3v61-indicatorContainer']")
+    @FindBy (id = "numberOfSeats-input")
+    WebElement numberOfSeatsList;
+
+
+    @FindBy (id = "react-select-sideOfSteeringWheel-instance-placeholder")
     WebElement sideOfTheSteeringWheel;
 
-    @FindBy (xpath = "//div[@id='airCondition']//div[@class=' css-1xc3v61-indicatorContainer']")
+    @FindBy (id = "sideOfSteeringWheel-input")
+    WebElement sideOfSteeringWheelNumber;
+
+    @FindBy (id = "react-select-airCondition-instance-placeholder")
     WebElement airCondition;
 
-    @FindBy (xpath = "//div[@id='color']//div[@class=' css-1xc3v61-indicatorContainer']")
+    @FindBy (id = "airCondition-input")
+    WebElement airConditionBoolean;
+
+    @FindBy (xpath = "//div[@id='color']//div[@class=' css-g1hey4']")
     WebElement carColor;
 
-    @FindBy (xpath = "//div[@id='interiorMaterial']//div[@class=' css-1xc3v61-indicatorContainer']")
-    WebElement interiorMaterial;
+    @FindBy (id = "color-input")
+    WebElement carColorInput;
 
-    @FindBy (xpath = "//div[@id='interiorColor']//div[@class=' css-1xc3v61-indicatorContainer']")
-    WebElement interiorColor;
-
-    @FindBy (xpath = "//div[@id='registeredUntil']//div[@class=' css-1xc3v61-indicatorContainer']")
+    @FindBy (xpath = "//div[@id='registeredUntil']//div[@class=' css-g1hey4']")
     WebElement registeredUntil;
 
-    @FindBy (xpath = "//div[@id='damage']//div[@class=' css-1xc3v61-indicatorContainer']")
+    @FindBy (id = "registeredUntil-input")
+    WebElement registeredUntilInput;
+
+    @FindBy (xpath = "//div[@id='damage']//div[@class=' css-g1hey4']")
     WebElement damage;
 
-    @FindBy (xpath = "//div[@id='exchange']//div[@class=' css-1xc3v61-indicatorContainer']")
-    WebElement noReplacement;
+    @FindBy (id = "damage-input")
+    WebElement damageInput;
 
-    @FindBy (xpath = "//div[@id='origin']//div[@class=' css-1xc3v61-indicatorContainer']")
+    @FindBy (id = "react-select-origin-instance-placeholder")
     WebElement originOfTheVehicle;
+
+    @FindBy (id = "origin-input")
+    WebElement originInput;
 
     @FindBy (id = "negotiated")
     WebElement carPrice;
 
     //contact info
 
+    @FindBy (id = "firstName")
+    WebElement firstName;
+
+    @FindBy (id = "lastName")
+    WebElement lastName;
+
     @FindBy (css = ".sc-bmpQMC")
     WebElement submitAdd;
+
+    @FindBy (css = ".sc-gJFNMl")
+    WebElement myProfile;
+
+    @FindBy (xpath = "//a[contains(.,'oglas1')]")
+    WebElement createdAd;
+
+
+    public void clickAndSelectDropdownItem (WebElement element, String string) {
+        element.click();
+        element.sendKeys(string);
+        element.sendKeys(Keys.ENTER);
+    }
+    public void fillAdCarForm() {
+        internalNumber.sendKeys("1234");
+        reservedCheckbox.click();
+        uploadPhoto.sendKeys(filePath);
+        chooseCarBrand.click();
+        clickAndSelectDropdownItem(carBrandList, "Mercedes benz");
+        chooseCarModel.click();
+        clickAndSelectDropdownItem(modelList, "114");
+
+        //basic information
+        carYear.sendKeys("2011");
+        fuel.click();
+        clickAndSelectDropdownItem(fuelList, "benzin");
+
+        //additional information
+        cubicCapacity.sendKeys("550");
+        powerKw.sendKeys("20");
+        mileage.sendKeys("10000");
+        engineEmissionClass.click();
+        clickAndSelectDropdownItem(getEngineEmissionList, "Euro 1");
+        drive.click();
+        clickAndSelectDropdownItem(driveList,"Prednji");
+        transmission.click();
+        clickAndSelectDropdownItem(transmissionList, "Manuelni 4 brzine");
+        numberOfDoors.click();
+        clickAndSelectDropdownItem(numberOfDoorsList, "2/3 vrata");
+        numberOfSeats.click();
+        clickAndSelectDropdownItem(numberOfSeatsList, "5 sedišta");
+        sideOfTheSteeringWheel.click();
+        clickAndSelectDropdownItem(sideOfSteeringWheelNumber, "Levi volan");
+        airCondition.click();
+        clickAndSelectDropdownItem(airConditionBoolean, "Ima klimu");
+        carColor.click();
+        clickAndSelectDropdownItem(carColorInput, "Crvena");
+        registeredUntil.click();
+        clickAndSelectDropdownItem(registeredUntilInput, "Nije registrovan");
+        damage.click();
+        clickAndSelectDropdownItem(damageInput, "Nije oštećen");
+        originOfTheVehicle.click();
+        clickAndSelectDropdownItem(originInput, "Na ime kupca");
+        //car price
+        carPrice.sendKeys("3000");
+        //contact info
+        firstName.sendKeys("Ana");
+        lastName.sendKeys("Bajic");
+        submitAdd.click();
+    }
+
+    public void checkCreatedAdIsVisible () {
+        myProfile.click();
+        String adName = createdAd.getText();
+        String adExpectedName = "oglas1";
+        //createdAd.click();
+        Assert.assertEquals(adName,adExpectedName);
+        System.out.println("Ad title: " + adName);
+
+    }
 }

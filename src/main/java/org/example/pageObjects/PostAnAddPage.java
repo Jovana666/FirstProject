@@ -1,5 +1,7 @@
 package org.example.pageObjects;
 
+import org.example.helper.Helper;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +11,8 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
+import static org.junit.Assert.assertTrue;
 
 public class PostAnAddPage {
     //this class represents a page object linked to https://profile.stg.polovni.dev/kategorije
@@ -46,9 +50,11 @@ public class PostAnAddPage {
     @FindBy (id = "partsAndEquipment")
     private WebElement partsAndEquipmentCategory;
 
-    public void chooseCategory () {
-        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-        wait.until(ExpectedConditions.visibilityOf(postAnAdd));
-        postAnAdd.click();
+    public void chooseCategory() {
+         postAnAdd.click();
+    }
+    public void chooseCarCategory () {
+        //add wait for the page to load
+        carsCategory.click();
     }
 }

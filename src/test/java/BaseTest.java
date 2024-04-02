@@ -1,4 +1,4 @@
-import org.example.pageObjects.BasePage;
+import org.example.helper.Helper;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -6,9 +6,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
     protected static WebDriver driver;
-    protected static BasePage basePage;
 
     private static final String APP_URL = "https://public.stg.polovni.dev/";
+
 
     @Before
     public void launchApplication(){
