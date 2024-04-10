@@ -1,7 +1,6 @@
 import org.checkerframework.checker.units.qual.A;
 import org.example.helper.Helper;
 import org.example.pageObjects.AddCarPage;
-import org.example.pageObjects.LoginPage;
 import org.junit.Test;
 
 public class AddCarAdTest extends BaseTest{
@@ -15,6 +14,5 @@ public class AddCarAdTest extends BaseTest{
         helper.waitForPageToLoad();
         addCarPage.fillAdCarForm();
         addCarPage.checkCreatedAdIsVisible();
-
     }
 }

@@ -1,7 +1,5 @@
 package org.example.pageObjects;
 
-
-import org.example.helper.Helper;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +15,6 @@ public class AddCarPage{
 
     public AddCarPage(WebDriver driver) {
         this.driver = driver;
-        //to initialize web elements
         PageFactory.initElements(driver, this);
     }
 
@@ -42,7 +39,7 @@ public class AddCarPage{
     @FindBy (id = "model-input")
     WebElement modelList;
 
-        @FindBy (id = "year")
+    @FindBy (id = "year")
     WebElement carYear;
 
     @FindBy (id = "react-select-fuelType-instance-placeholder")
@@ -208,6 +205,5 @@ public class AddCarPage{
         //createdAd.click();
         Assert.assertEquals(adName,adExpectedName);
         System.out.println("Ad title: " + adName);
-
     }
 }

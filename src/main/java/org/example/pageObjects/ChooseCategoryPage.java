@@ -1,24 +1,17 @@
 package org.example.pageObjects;
 
-import org.example.helper.Helper;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 import static org.junit.Assert.assertTrue;
 
-public class PostAnAddPage {
+public class ChooseCategoryPage {
     //this class represents a page object linked to https://profile.stg.polovni.dev/kategorije
     protected WebDriver driver;
 
-    public PostAnAddPage(WebDriver driver) {
+    public ChooseCategoryPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -53,8 +46,46 @@ public class PostAnAddPage {
     public void chooseCategory() {
          postAnAdd.click();
     }
+
+    // I would like to have one method where you choose which element you want to pass --> this method will click on the element
     public void chooseCarCategory () {
         //add wait for the page to load
         carsCategory.click();
     }
+
+    public void chooseMotorcycleCategory () {
+        //add wait for the page to load
+        motorsCategory.click();
+    }
+
+    public void chooseTransportVehicleCategory () {
+        //add wait for the page to load
+        transportVehiclesCategory.click();
+    }
+
+    public void chooseAgroMachinesCategory () {
+        //add wait for the page to load
+        agriculturalMachinesCategory.click();
+    }
+
+    public void chooseWorkingMachinesCategory () {
+        //add wait for the page to load
+        workingMachinesCategory.click();
+    }
+
+    public void chooseVesselsCategory () {
+        //add wait for the page to load
+        vesselsCategory.click();
+    }
+
+    public void chooseBicycleCategory () {
+        //add wait for the page to load
+        bicyclesCategory.click();
+    }
+
+    public void choosePartsAndEquipmentsCategory () {
+        //add wait for the page to load
+        partsAndEquipmentCategory.click();
+    }
+
 }
