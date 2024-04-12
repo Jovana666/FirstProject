@@ -10,7 +10,7 @@ public class AddMotorcycleTest extends BaseTest{
 
     @Test
 
-    public void chooseMotorcycleTest() {
+    public void chooseMotorcycle () {
         ChooseCategoryPage postAnAddPage = new ChooseCategoryPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         Helper helper = new Helper(driver);
@@ -18,13 +18,15 @@ public class AddMotorcycleTest extends BaseTest{
         loginPage.login();
         helper.waitForPageToLoad();
         postAnAddPage.chooseMotorcycleCategory();
+        String url = driver.getCurrentUrl();
+        Assert.assertEquals(url ,"https://profile.stg.polovni.dev/motori");
     }
 
     @Test
-    public void addMotorcycleTest() {
+    public void addMotorcycle () {
         AddMotorcyclePage motorcyclePage = new AddMotorcyclePage(driver);
         Helper helper = new Helper(driver);
-        chooseMotorcycleTest();
+        chooseMotorcycle();
         String url = driver.getCurrentUrl();
         Assert.assertEquals(url ,"https://profile.stg.polovni.dev/motori");
         motorcyclePage.fillAddMotorcycleForm();

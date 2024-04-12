@@ -11,7 +11,7 @@ public class BaseTest {
 
 
     @Before
-    public void launchApplication(){
+    public void launchApplication (){
         setChromeDriverProperty();
         driver = new ChromeDriver();
         driver.get(APP_URL);
@@ -19,11 +19,11 @@ public class BaseTest {
     }
 
     @After
-    public void closeBrowser(){
+    public void closeBrowser (){
         driver.quit();
     }
 
-    private static void setChromeDriverProperty(){
+    private static void setChromeDriverProperty (){
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\inspira\\IdeaProjects\\FirstProject\\src\\main\\resources\\chromedriver.exe");
     }
 }

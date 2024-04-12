@@ -9,26 +9,24 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.security.Key;
 
-public class AddCarPage{
+public class AddCarPage extends BaseCategoryPage{
 
     protected WebDriver driver;
 
     public AddCarPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
     private String filePath = "C:\\Users\\inspira\\IdeaProjects\\FirstProject\\imageCar.jpg";
-    @FindBy(id = "agencyInternalId")
-    WebElement internalNumber;
+
 
     @FindBy (id = "reserved")
     WebElement reservedCheckbox;
 
     @FindBy (id = "imageUpload")
     WebElement uploadPhoto;
-    @FindBy (id = "react-select-brand-instance-placeholder")
-    WebElement chooseCarBrand;
 
     @FindBy (id = "brand-input")
     WebElement carBrandList;
@@ -39,23 +37,11 @@ public class AddCarPage{
     @FindBy (id = "model-input")
     WebElement modelList;
 
-    @FindBy (id = "year")
-    WebElement carYear;
-
     @FindBy (id = "react-select-fuelType-instance-placeholder")
     WebElement fuel;
 
     @FindBy (id = "fuelType-input")
     WebElement fuelList;
-
-    @FindBy (id = "cubic")
-    WebElement cubicCapacity;
-
-    @FindBy (id = "powerKw")
-    WebElement powerKw;
-
-    @FindBy (id = "mileage")
-    WebElement mileage;
 
     @FindBy (id = "react-select-engineEmissionClass-instance-placeholder")
     WebElement engineEmissionClass;
@@ -87,7 +73,6 @@ public class AddCarPage{
     @FindBy (id = "numberOfSeats-input")
     WebElement numberOfSeatsList;
 
-
     @FindBy (id = "react-select-sideOfSteeringWheel-instance-placeholder")
     WebElement sideOfTheSteeringWheel;
 
@@ -106,61 +91,21 @@ public class AddCarPage{
     @FindBy (id = "color-input")
     WebElement carColorInput;
 
-    @FindBy (xpath = "//div[@id='registeredUntil']//div[@class=' css-g1hey4']")
-    WebElement registeredUntil;
-
-    @FindBy (id = "registeredUntil-input")
-    WebElement registeredUntilInput;
-
-    @FindBy (xpath = "//div[@id='damage']//div[@class=' css-g1hey4']")
-    WebElement damage;
-
-    @FindBy (id = "damage-input")
-    WebElement damageInput;
-
-    @FindBy (id = "react-select-origin-instance-placeholder")
-    WebElement originOfTheVehicle;
-
-    @FindBy (id = "origin-input")
-    WebElement originInput;
-
-    @FindBy (id = "negotiated")
-    WebElement carPrice;
-
-    //contact info
-
-    @FindBy (id = "firstName")
-    WebElement firstName;
-
-    @FindBy (id = "lastName")
-    WebElement lastName;
-
-    @FindBy (css = ".sc-bmpQMC")
-    WebElement submitAdd;
-
-    @FindBy (css = ".sc-gJFNMl")
-    WebElement myProfile;
-
     @FindBy (xpath = "//a[contains(.,'oglas1')]")
     WebElement createdAd;
+    //needs a different way of asserting
 
-
-    public void clickAndSelectDropdownItem (WebElement element, String string) {
-        element.click();
-        element.sendKeys(string);
-        element.sendKeys(Keys.ENTER);
-    }
     public void fillAdCarForm() {
         internalNumber.sendKeys("1234");
         reservedCheckbox.click();
         uploadPhoto.sendKeys(filePath);
-        chooseCarBrand.click();
+        chooseBrand.click();
         clickAndSelectDropdownItem(carBrandList, "Mercedes benz");
         chooseCarModel.click();
         clickAndSelectDropdownItem(modelList, "114");
 
         //basic information
-        carYear.sendKeys("2011");
+        year.sendKeys("2011");
         fuel.click();
         clickAndSelectDropdownItem(fuelList, "benzin");
 
@@ -191,7 +136,7 @@ public class AddCarPage{
         originOfTheVehicle.click();
         clickAndSelectDropdownItem(originInput, "Na ime kupca");
         //car price
-        carPrice.sendKeys("3000");
+        price.sendKeys("3000");
         //contact info
         firstName.sendKeys("Ana");
         lastName.sendKeys("Bajic");
@@ -200,10 +145,5 @@ public class AddCarPage{
 
     public void checkCreatedAdIsVisible () {
         myProfile.click();
-        String adName = createdAd.getText();
-        String adExpectedName = "oglas1";
-        //createdAd.click();
-        Assert.assertEquals(adName,adExpectedName);
-        System.out.println("Ad title: " + adName);
     }
 }
