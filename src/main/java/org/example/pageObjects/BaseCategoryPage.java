@@ -31,6 +31,9 @@ public class BaseCategoryPage {
     @FindBy (id = "year")
     WebElement year;
 
+    @FindBy (id = "react-select-type-instance-placeholder")
+    WebElement typeInput;
+
     @FindBy (id = "cubic")
     WebElement cubicCapacity;
 
@@ -60,6 +63,9 @@ public class BaseCategoryPage {
 
     @FindBy (id = "negotiated")
     WebElement price;
+
+    @FindBy (id = "district-input")
+    WebElement districtInput;
 
     @FindBy (id = "firstName")
     WebElement firstName;

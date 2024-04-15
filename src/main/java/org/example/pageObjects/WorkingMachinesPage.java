@@ -19,9 +19,6 @@ public class WorkingMachinesPage extends BaseCategoryPage{
     @FindBy (id = "model")
     WebElement model;
 
-    @FindBy (id = "react-select-type-instance-placeholder")
-    WebElement type;
-
     @FindBy (id = "type-input")
     WebElement typeInput;
 
@@ -41,7 +38,7 @@ public class WorkingMachinesPage extends BaseCategoryPage{
             model.click();
             clickAndSelectDropdownItem(model, "500");
             year.sendKeys("2015");
-            type.click();
+            typeInput.click();
             clickAndSelectDropdownItem(typeInput, "Drobilica");
             registeredUntil.click();
             clickAndSelectDropdownItem(registeredUntilInput, "06.2024.");
@@ -51,6 +48,7 @@ public class WorkingMachinesPage extends BaseCategoryPage{
             clickAndSelectDropdownItem(originInput, "Na ime kupca");
             price.sendKeys("6000");
             PDVbtn.click();
+            districtInput.click();
             firstName.sendKeys("Ime");
             lastName.sendKeys("last name");
             submitAddBtn.click();
