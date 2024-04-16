@@ -6,26 +6,34 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class AddBicycleTest extends BaseTest{
+    private ChooseCategoryPage postAnAddPage;
+    private LoginPage loginPage;
+    private AddBicyclePage addBicyclePage;
+    private Helper helper;
+
+    @Before
+    public void testSetUp() {
+        postAnAddPage = new ChooseCategoryPage(driver);
+        loginPage = new LoginPage(driver);
+        addBicyclePage = new AddBicyclePage(driver);
+        helper = new Helper(driver);
+    }
 
     @Test
-    public void chooseBicycle () {
-        ChooseCategoryPage postAnAddPage = new ChooseCategoryPage(driver);
-        LoginPage loginPage = new LoginPage(driver);
-        Helper helper = new Helper(driver);
+    public void testChooseBicycleCategory () {
         postAnAddPage.chooseCategory();
         loginPage.login();
         helper.waitForPageToLoad();
         postAnAddPage.chooseBicycleCategory();
         String url = driver.getCurrentUrl();
-        Assert.assertEquals(url ,"https://profile.stg.polovni.dev/bicikli");
+        Assert.assertEquals("URL should match expected" ,"https://profile.stg.polovni.dev/bicikli");
     }
 
     @Test
-    public void addBicycle () {
-        AddBicyclePage addBicyclePage = new AddBicyclePage(driver);
-        Helper helper = new Helper(driver);
-        chooseBicycle();
+    public void testAddBicycle () {
+        testChooseBicycleCategory();
         helper.waitForPageToLoad();
         addBicyclePage.fillAddBicycleForm();
+        // Add assertions here to verify the outcome
     }
 }

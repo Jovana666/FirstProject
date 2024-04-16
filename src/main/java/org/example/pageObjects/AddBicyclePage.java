@@ -5,36 +5,41 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AddBicyclePage extends BaseCategoryPage{
+public class AddBicyclePage extends BaseCategoryPage {
 
-    protected WebDriver driver;
+    @FindBy(id = "model")
+    private WebElement modelInput;
+
+    @FindBy(id = "type-input")
+    private WebElement bicycleTypeInput;
+
+    @FindBy(css = ".sc-jigNDC")
+    private WebElement submitButton;
 
     public AddBicyclePage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(this.driver, this);
     }
 
-    @FindBy (id = "model")
-    WebElement modelInput;
-
-    @FindBy (id = "type-input")
-    WebElement type;
-
-    @FindBy (css = ".sc-jigNDC")
-    WebElement submitBicycle;
-
-    public void fillAddBicycleForm() {
-        internalNumber.sendKeys("222");
+        public void fillAddBicycleForm() {
+        enterText(internalNumber, "222");
         clickAndSelectDropdownItem(brandInput, "BMW");
         clickAndSelectDropdownItem(modelInput, "BMW");
-        year.sendKeys("2015");
-        clickAndSelectDropdownItem(type,"BMX");
-        damage.click();
-        clickAndSelectDropdownItem(damageInput, "Oštećen - u voznom stanju");
-        price.sendKeys("3500");
-        firstName.sendKeys("Ime3");
-        lastName.sendKeys("last name");
-        submitBicycle.click();
+        enterText(year, "2015");  
+        clickAndSelectDropdownItem(bicycleTypeInput, "BMX");
+        selectDamageState("Oštećen - u voznom stanju");
+        enterText(price, "3500");  
+        enterText(firstName, "Ime3"); 
+        enterText(lastName, "last name");  
+        submitForm();
+    }
+
+    private void selectDamageState(String damageState) {
+        damage.click();  // Assuming this is necessary to make the damageInput interactable
+        clickAndSelectDropdownItem(damageInput, damageState);
+    }
+
+    private void submitForm() {
+        submitButton.click();
     }
 }
