@@ -79,6 +79,11 @@ public class BaseCategoryPage {
     @FindBy (css = ".sc-gJFNMl")
     WebElement myProfile;
 
+    protected void enterText(WebElement element, String text) {
+        element.clear();  
+        element.sendKeys(text);  
+    }
+
     public void clickAndSelectDropdownItem (WebElement element, String string) {
         element.click();
         element.sendKeys(string);
